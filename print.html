@@ -1,0 +1,1076 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Streamlit Digital Book</title>
+        
+        <meta name="robots" content="noindex" />
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Streamlit Book contains details of the installation, concepts and uninstallation.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="favicon.png">
+        
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="front/index.html">Home</a></li><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="concepts.html"><strong aria-hidden="true">2.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="examples.html"><strong aria-hidden="true">3.</strong> Examples</a></li><li class="chapter-item expanded "><a href="mlapps.html"><strong aria-hidden="true">4.</strong> MLApps</a></li><li class="chapter-item expanded "><a href="references.html"><strong aria-hidden="true">5.</strong> References</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="contributors.html">Contributors</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Streamlit Digital Book</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#centerimg-srcfrontimagesbookpng-alt--welcome-to-streamlit-book-center" id="centerimg-srcfrontimagesbookpng-alt--welcome-to-streamlit-book-center"><center><img src="front/images/book.png" alt="" /> <strong>👋Welcome to Streamlit Book</strong> </center></a></h1>
+<hr />
+<p>This book contains the details of the python package called streamlit and its concepts, Visit <a href="https://www.streamlit.io/">streamlit</a> for more details.</p>
+<h3><a class="header" href="#introduction" id="introduction"><strong>Introduction</strong></a></h3>
+<ul>
+<li>What is streamlit?</li>
+<li>How to install?</li>
+</ul>
+<h3><a class="header" href="#concepts" id="concepts"><strong>Concepts</strong></a></h3>
+<ul>
+<li>Title, input, text input, image, video, sidebar, markdown, latex ..etc</li>
+</ul>
+<h3><a class="header" href="#references" id="references"><strong>References</strong></a></h3>
+<ul>
+<li><a href="https://docs.streamlit.io/en/stable/">docs</a></li>
+</ul>
+<h1><a class="header" href="#centerimg-srcimagesintroductionpng-alt--introductioncenter" id="centerimg-srcimagesintroductionpng-alt--introductioncenter"><center><img src="images/introduction.png" alt="" /> <strong>Introduction</strong></center></a></h1>
+<hr />
+<p><strong>Streamlit</strong> is a python library that makes easy to create and share the web applications with out html, css and javascript.</p>
+<h4><a class="header" href="#1-pre-requisites" id="1-pre-requisites"><strong>1. Pre-requisites</strong></a></h4>
+<ul>
+<li>Python Version &gt; 3.6</li>
+</ul>
+<h4><a class="header" href="#2-installation" id="2-installation"><strong>2. Installation</strong></a></h4>
+<ul>
+<li>
+<p><strong>Standalone</strong>🎷</p>
+<ul>
+<li>pip install streamlit</li>
+<li>streamlit hello</li>
+</ul>
+</li>
+<li>
+<p><strong>Anaconda</strong>🐍</p>
+<ul>
+<li>conda create --name streamlit (create new environment)</li>
+<li>conda activate streamlit (activate)</li>
+<li>pip install streamlit</li>
+<li>streamlit hello</li>
+<li>conda deactivate (to deactivate )</li>
+</ul>
+</li>
+<li>
+<p><strong>Venv</strong> ✅(Built in python no need to do pip install)</p>
+<ul>
+<li>python -m venv streamlit (create new environment)</li>
+<li>cd pathtostreamlit\Scripts\activate.bat (activate)</li>
+<li>pip install streamlit</li>
+<li>streamlit hello</li>
+<li>cd pathtostreamlit\Scripts\deactivate.bat (deactivate)</li>
+</ul>
+</li>
+<li>
+<p><strong>Virtualenv</strong>👋</p>
+<ul>
+<li>pip install virtualenv</li>
+<li>virtual streamlit (create new environment)</li>
+<li>cd pathtostreamlit\Scripts\activate.bat (activate)</li>
+<li>pip install streamlit</li>
+<li>streamlit hello</li>
+<li>cd pathtostreamlit\Scripts\deactivate.bat (deactivate)</li>
+</ul>
+</li>
+<li>
+<p><strong>Pipenv</strong>🔆</p>
+<ul>
+<li>pip install pipenv</li>
+<li>pipenv install streamlit</li>
+<li>pipenv shell or pipenv run (activate)</li>
+<li>streamlit hello</li>
+<li>exit (deactivate)</li>
+</ul>
+</li>
+</ul>
+<h4><a class="header" href="#3-uninstallation" id="3-uninstallation"><strong>3. Uninstallation</strong></a></h4>
+<ul>
+<li>pip uninstall streamlit</li>
+</ul>
+<h4><a class="header" href="#4-commands" id="4-commands"><strong>4. Commands</strong></a></h4>
+<ul>
+<li>
+<p><strong>Basic Commands</strong>✅</p>
+<ul>
+<li>streamlit --help</li>
+<li>streamlit hello</li>
+<li>streamlit config show</li>
+<li>streamlit cache clear</li>
+<li>streamlit docs</li>
+<li>streamlit --version</li>
+</ul>
+</li>
+<li>
+<p><strong>Run Command</strong>👋</p>
+<ul>
+<li>streamlit run scriptname.py</li>
+<li>streamlit run 'url.py' (Github or Gist)
+<ul>
+<li><strong>Gist Example</strong> - streamlit run https://gist.github.com/SurendraRedd/feaa6f29961501fa9fce7a45abc14651/raw/Example.py</li>
+<li><strong>GitHub Example</strong> - streamlit run https://github.com/SurendraRedd/StreamlitProjects/blob/master/Example.py</li>
+</ul>
+</li>
+<li>streamlit run app.py --server.port 8503 (to run in different port)</li>
+</ul>
+</li>
+</ul>
+<h1><a class="header" href="#centerimg-srcimagesconceptjpg-alt--conceptscenter" id="centerimg-srcimagesconceptjpg-alt--conceptscenter"><center><img src="images/concept.jpg" alt="" /> <strong>Concepts</strong></center></a></h1>
+<hr />
+<h4><a class="header" href="#import" id="import"><strong>Import</strong></a></h4>
+<pre><code>import streamlit as st
+</code></pre>
+<h4><a class="header" href="#display" id="display"><strong>Display</strong></a></h4>
+<ul>
+<li>
+<p><strong>Text/Title</strong></p>
+<pre><code>  import streamlit as st
+  st.title(&quot;Welcome to streamlit&quot;)
+  st.text('Happy Learning!')
+</code></pre>
+</li>
+<li>
+<p><strong>Header/Subheader</strong></p>
+<pre><code>  import streamlit as st
+  st.header('Header')
+  st.subheader('Subheader')
+</code></pre>
+</li>
+<li>
+<p><strong>Markdown</strong></p>
+<pre><code>  import streamlit as st
+
+  # Basic markdown
+  st.markdown('Header')
+
+  # Advanced
+  html_temp = &quot;&quot;&quot;
+  &lt;div style=&quot;background-color:tomato;padding:10px&quot;&gt;
+  &lt;h2 style=&quot;color:white;text-align:center;&quot;&gt;Markdown html Example &lt;/h2&gt;
+  &lt;/div&gt;
+  &quot;&quot;&quot;
+  st.markdown(html_temp,unsafe_allow_html=True)
+  st.markdown('&lt;i class=&quot;material-icons&quot;&gt;{}&lt;/i&gt;'.format(&quot;people&quot;), unsafe_allow_html=True)
+
+  # Load stylesheet
+  with open(style.css) as f:
+  	st.markdown('&lt;style&gt;{}&lt;/style&gt;'.format(f.read()), unsafe_allow_html=True)
+</code></pre>
+</li>
+<li>
+<p><strong>Latex</strong></p>
+<pre><code>  import streamlit as st
+  st.latex(r''' e^{i\pi} + 1 = 0 ''')
+  st.latex(r'''
+  		... a + ar + a r^2 + a r^3 + \cdots + a r^{n-1} =
+  		... \sum_{k=0}^{n-1} ar^k =
+  		... a \left(\frac{1-r^{n}}{1-r}\right)
+  		... ''')
+</code></pre>
+</li>
+<li>
+<p><strong>Write</strong></p>
+<pre><code>  import streamlit as st
+  st.write('Example text')
+  st.write(['st', 'is &lt;', 3])
+  st.write(&quot;✔️ Time up!&quot;)
+</code></pre>
+</li>
+<li>
+<p><strong>Code</strong></p>
+<pre><code>  import streamlit as st
+  st.code('s=&quot;Happy Learning!&quot; for i in range(0,10): print(s)')
+
+  st.echo()
+  with st.echo():
+  	text = 's=&quot;Happy Learning!&quot; for i in range(0,10): print(s)'
+  	st.write(text)
+</code></pre>
+</li>
+<li>
+<p><strong>Help</strong></p>
+<pre><code>  import streamlit as st
+  st.help(range)
+</code></pre>
+</li>
+</ul>
+<h4><a class="header" href="#data" id="data"><strong>Data</strong></a></h4>
+<pre><code>	import streamlit as st
+	import pandas as pd
+	import numpy as np
+
+	df1 = pd.DataFrame(
+    np.random.randn(50, 5),
+    columns=('col %d' % i for i in range(5)))
+	my_table = st.table(df1)
+
+	st.write('Dataframe example')
+	st.dataframe(df1)
+
+	data = {'1':&quot;True&quot;,'2':&quot;True&quot;,'3':&quot;False&quot;}
+	st.json(data)
+</code></pre>
+<h4><a class="header" href="#media" id="media"><strong>Media</strong></a></h4>
+<pre><code>	import streamlit as st
+	from PIL import Image
+	import urllib.request
+
+	# Basic image
+	st.image('./image.png')
+
+	img = Image.open(&quot;download.jfif&quot;) #open the image stored in specified location
+
+	#Opens the image from the url
+	img = Image.open(urllib.request.urlopen(&quot;https://mms.businesswire.com/media/20200616005364/en/798639/22/Streamlit_Logo_%281%29.jpg&quot;)) 
+
+	st.image(img, width=300, caption=&quot;Simple Image&quot;)
+
+
+	# Video playing
+	vid_file = open(&quot;videofile.mp4&quot;,&quot;rb&quot;).read() #play the video stored in specified location
+	st.video(vid_file)
+
+	#Audio
+	audio_file = open('myaudio.ogg', 'rb')
+	audio_bytes = audio_file.read()
+	st.audio(audio_bytes, format='audio/ogg')
+</code></pre>
+<h4><a class="header" href="#charts" id="charts"><strong>Charts</strong></a></h4>
+<pre><code>	import streamlit as st
+	import numpy as np
+	import matplotlib.pyplot as plt
+
+	st.line_chart({&quot;data&quot;: [1, 5, 2, 6, 2, 1]})
+	st.area_chart({&quot;data&quot;: [1, 5, 2, 6, 2, 1]})
+	st.bar_chart({&quot;data&quot;: [1, 5, 2, 6, 2, 1]})
+
+	arr = np.random.normal(1, 1, size=100)
+	fig, ax = plt.subplots()
+	ax.hist(arr, bins=20)
+	st.pyplot(fig)
+
+	st.altair_chart(data)
+	st.vega_lite_chart(data)
+	st.plotly_chart(data)
+	st.bokeh_chart(data)
+	st.pydeck_chart(data)
+	st.deck_gl_chart(data)
+	st.graphviz_chart(data)
+	st.map(data)
+</code></pre>
+<h4><a class="header" href="#widgets" id="widgets"><strong>Widgets</strong></a></h4>
+<pre><code>	import streamlit as st
+
+	st.button('Click')
+	st.checkbox('Check the checkbox')
+	st.radio('Radio Button',[1,2,3])
+	st.selectbox('Select', [1,2,3])
+	st.multiselect('Multiselect', [1,2,3])
+	st.slider('slide',min_value=0, max_value=10)
+	st.text_input('Enter Username')
+	st.number_input('Enter a Number')
+	st.text_area('Enter Text Here!')
+	st.date_input('Date Input')
+	st.time_input('Time entry')
+	st.file_uploader('File Uploader')
+	st.beta_color_picker('Select color')
+</code></pre>
+<h4><a class="header" href="#sidebar" id="sidebar"><strong>Sidebar</strong></a></h4>
+<pre><code>	import streamlit as st
+	st.sidebar.&lt;widget&gt;
+	&lt;widget&gt; : button, checkbox, radio, selectbox, multiselect, slider, text_input, number_input, text_area, date_input, time_input
+</code></pre>
+<h4><a class="header" href="#control-flow" id="control-flow"><strong>Control Flow</strong></a></h4>
+<pre><code>	import streamlit as st
+	st.stop()
+</code></pre>
+<h4><a class="header" href="#progress-bar" id="progress-bar"><strong>Progress Bar</strong></a></h4>
+<pre><code>	import streamlit as st
+	import time
+
+	# Sample Progress bar
+	my_bar = st.progress(0)
+
+	for percent_complete in range(100):
+		time.sleep(0.1)
+		my_bar.progress(percent_complete + 1)
+
+	with st.spinner('Wait for it...'):
+	    time.sleep(5)
+	st.write('Done!')
+</code></pre>
+<h4><a class="header" href="#status-messages--others" id="status-messages--others"><strong>Status Messages &amp; Others</strong></a></h4>
+<pre><code>	import streamlit as st
+
+	st.error('Error Message')
+	st.warning('Warning Message')
+	st.info('Info Message')
+	st.success('Success Message')
+	st.exception(&quot;IndexError('list out of index')&quot;)
+	st.balloons()
+
+	st.empty()
+	place_holder = st.empty()
+	place_holder.text('Replaced!)
+
+	st.get_option(key)
+	st.set_option(key)
+
+	st.beta_set_page_config(layout='wide')
+</code></pre>
+<h4><a class="header" href="#cache-or-optimize" id="cache-or-optimize"><strong>Cache or Optimize</strong></a></h4>
+<pre><code>	import streamlit as st
+
+	@st.cache
+	func()
+</code></pre>
+<h4><a class="header" href="#magic-command" id="magic-command"><strong>Magic Command</strong></a></h4>
+<pre><code>	import streamlit as st
+	
+	'''
+	# Markdown magic
+
+	This is some _**text**_.
+	'''
+
+	df = pd.DataFrame({'col1': [40,54,67]})
+	df  # &lt;-- df values
+
+	x = 100
+	'x', x  # &lt;-- 'x' and its value
+</code></pre>
+<h4><a class="header" href="#apps-deployment" id="apps-deployment"><strong>Apps Deployment</strong></a></h4>
+<ul>
+<li>
+<p><strong>Using StreamlitShare</strong></p>
+<p><img src="images/flow.png" alt="" /></p>
+<p><strong>Prerequisites</strong></p>
+<ul>
+<li>
+<p>Requirements.txt file
+- Github account
+- Access to share.streamlit.io</p>
+</li>
+<li>
+<p><a href="https://learnups2020.wordpress.com/2020/10/24/deployment-using-streamlit-sharing/">ReferLink</a></p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Using Heroku</strong></p>
+<p><img src="images/HerokuDeployment.png" alt="" /></p>
+</li>
+</ul>
+<h3><a class="header" href="#references-1" id="references-1"><strong>References</strong></a></h3>
+<ul>
+<li><a href="https://docs.streamlit.io/en/stable/api.html">docs/API</a></li>
+</ul>
+<h1><a class="header" href="#centerimg-srcimagescodepng-alt--streamlit-sample-codescenter" id="centerimg-srcimagescodepng-alt--streamlit-sample-codescenter"><center><img src="images/Code.png" alt="" /> <strong>Streamlit Sample codes</strong></center></a></h1>
+<hr />
+<h4><a class="header" href="#codes" id="codes"><strong>Codes</strong></a></h4>
+<ul>
+<li>
+<p><strong>Example- Usage of Slider, SelectBox &amp; Miltiselect</strong></p>
+<pre><code>  import streamlit as st
+  import numpy as np
+
+  x = st.slider('Select a value')
+  st.write(x, 'squared value is', x * x)
+
+  Exp = streamlit.selectbox(&quot;Choose your Experience: &quot;, np.arange(1, 40, 1))
+
+  lan = st.multiselect(&quot;Which is your favorite language?&quot;, 
+                   [&quot;Python&quot;, &quot;JavaScript&quot;,
+                   &quot;Java&quot;, &quot;C&quot;, &quot;Julia&quot;])
+</code></pre>
+</li>
+<li>
+<p><strong>Example- Usage of dataframe</strong></p>
+<pre><code>  import pandas as pd
+  import streamlit as st
+
+  @st.cache
+  def load_data():
+      df = pd.read_csv(&quot;data.csv&quot;) # csv
+      #df = pd.read_excel(&quot;data.excel&quot;) #excel
+      return df
+
+  # Will only run once if already cached
+  df = load_data()
+</code></pre>
+</li>
+<li>
+<p><strong>Example- Jupyter Notebook</strong></p>
+<pre><code>  # Run jupyter notebook in streamlit using 3 steps below
+  - jupyter nbconvert --to script scriptname.ipynb
+  - awk '!/ipython/' scriptname.py &gt; [temp.py](http://temp.py/) &amp;&amp; mv [temp.py](http://temp.py/) [app.py](http://app.py/) &amp;&amp; rm scriptname.py
+  - streamlit run [app.py](http://app.py/)
+  Refer the blog more details https://learnups2020.wordpress.com/2020/11/07/streamlit-code-running-from-jupyter-notebook/
+</code></pre>
+</li>
+<li>
+<p><strong>Example- Altair Chart</strong></p>
+<pre><code>  # Alt Chart example
+  import pandas as pd
+  import numpy as np
+  import altair as alt
+  import streamlit as st
+
+  df = pd.DataFrame(np.random.randn(100, 3), columns=['a', 'b', 'c'])
+  c = alt.Chart(df).mark_circle().encode(x='a', y='b', size='c',  
+                                  color='c')
+  st.altair_chart(c, width=-1)
+</code></pre>
+</li>
+<li>
+<p><strong>Example- Simple Calculator App using sqlite DB</strong></p>
+<pre><code>  # Simple Calculator
+  import pandas as pd
+  from pathlib import Path
+  import sqlite3
+  from sqlite3 import Connection
+  import streamlit as st
+
+  URI_SQLITE_DB = &quot;test.db&quot;
+
+
+  def main():
+  st.title(&quot;Simple Calculator&quot;)
+  st.markdown(&quot;Select two inputs from sidebar.&quot;)
+  
+  conn = get_connection(URI_SQLITE_DB)
+  init_db(conn)
+
+  build_sidebar(conn)
+  display_data(conn)
+  run_calculator(conn)
+
+
+  def init_db(conn: Connection):
+          conn.execute(
+                  &quot;&quot;&quot;CREATE TABLE IF NOT EXISTS test
+                  (
+                          INPUT1 INT,
+                          INPUT2 INT
+                  );&quot;&quot;&quot;
+          )
+          conn.commit()
+
+
+  def build_sidebar(conn: Connection):
+          st.sidebar.header(&quot;Inputs&quot;)
+          input1 = st.sidebar.slider(&quot;value-1&quot;, 0, 100)
+          input2 = st.sidebar.slider(&quot;value-2&quot;, 0, 100)
+          if st.sidebar.button(&quot;Save to database&quot;):
+                  conn.execute(f&quot;INSERT INTO test (INPUT1, INPUT2) VALUES ({input1}, {input2})&quot;)
+                  conn.commit()
+
+
+  def display_data(conn: Connection):
+          if st.checkbox(&quot;Display data from the database&quot;):
+                  st.dataframe(get_data(conn))
+
+
+  def run_calculator(conn: Connection):
+          if st.button(&quot;Calculate Sum&quot;):
+                  st.info(&quot;Sum of two inputs function is called.&quot;)
+                  df = get_data(conn)
+                  st.write(df.sum())
+
+
+  def get_data(conn: Connection):
+          df = pd.read_sql(&quot;SELECT * FROM test&quot;, con=conn)
+          return df
+
+
+  @st.cache(hash_funcs={Connection: id})
+  def get_connection(path: str):
+          &quot;&quot;&quot;Put the connection in cache to reuse if path does not change between Streamlit reruns.
+          NB : https://stackoverflow.com/questions/48218065/programmingerror-sqlite-objects-created-in-a-thread-can-only-be-used-in-that-sa
+          &quot;&quot;&quot;
+          return sqlite3.connect(path, check_same_thread=False)
+
+
+  if __name__ == &quot;__main__&quot;:
+          main()
+</code></pre>
+</li>
+<li>
+<p><strong>Example- ProgressBar in sidebar and generate chart</strong></p>
+<pre><code>  import streamlit as st 
+  import time 
+  import numpy as np
+
+  progress_bar = st.sidebar.progress(0)
+  status_text = st.sidebar.empty()
+  last_rows = np.random.randn(1, 1)
+  chart = st.line_chart(last_rows)
+
+
+  for i in range(1, 101):
+  new_rows = last_rows[-1, :] + np.random.randn(5, 1).cumsum(axis=0)
+  status_text.text(&quot;%i%% Complete&quot; % i)
+  chart.add_rows(new_rows)
+  progress_bar.progress(i)
+  last_rows = new_rows
+  time.sleep(0.05)
+
+  progress_bar.empty()
+
+  st.button(&quot;Re-run&quot;)
+</code></pre>
+</li>
+<li>
+<p><strong>Example- Streamlit Components Example</strong></p>
+<pre><code>  import streamlit as st
+
+  st.sidebar.subheader(&quot;Component 1&quot;)
+
+  t1 = st.sidebar.text_input(&quot;Component 1 name&quot;)
+  s1 = st.sidebar.slider(&quot;Component 1 value&quot;)
+
+  st.sidebar.markdown(&quot;---&quot;)
+
+  st.sidebar.subheader(&quot;Component 2&quot;)
+  t2 = st.sidebar.text_input(&quot;Component 2 name&quot;)
+  s2 = st.sidebar.slider(&quot;Component 2&quot;)
+
+  st.title(&quot;Hello!&quot;)
+
+  st.write(t1, s1)
+  st.write(t2, s2)
+
+
+  template = &quot;&quot;&quot;
+  &lt;div class=&quot;markdown-text-container stText&quot; style=&quot;width: 698px;&quot;&gt;
+  &lt;div style=&quot;font-size: small;&quot;&gt;This is paragraph 1 text.&lt;/div&gt;
+  &lt;p&gt;This is paragraph 2 text.&lt;/p&gt;
+  &lt;p&gt;This is paragraph 3 text.&lt;/p&gt;
+  &lt;/div&gt;
+  &quot;&quot;&quot;
+</code></pre>
+</li>
+<li>
+<p><strong>Example- Streamlit Code Share Example</strong></p>
+<pre><code>  Prerequisites
+  - pip install streamlit-embedcode
+  import streamlit as st
+  from streamlit_embedcode import github_gist, gitlab_snippet, pastebin_snippet, codepen_snippet, ideone_snippet, tagmycode_snippet
+
+  st.title(&quot;Github Gist Snippet&quot;)
+  github_gist(&quot;https://gist.github.com/SurendraRedd/feaa6f29961501fa9fce7a45abc14651&quot;)
+
+  st.title(&quot;Gitlab Snippet&quot;)
+  gitlab_snippet(&quot;https://gitlab.com/snippets/2037642&quot;, height=400)
+
+  st.title(&quot;Pastebin Snippet&quot;)
+  pastebin_snippet(&quot;https://pastebin.com/Ryr8q1kq&quot;, width = 600, scrolling = False)
+
+  st.title(&quot;Code Pen Snippet&quot;)
+  codepen_snippet(&quot;https://codepen.io/surendra1985/pen/wvGREBb&quot;, width = 600, scrolling = False)
+
+  st.title(&quot;Ideone Snippet&quot;)
+  ideone_snippet(&quot;https://ideone.com/tXCake&quot;)
+
+  st.title(&quot;Tagmycode Snippet&quot;)
+  tagmycode_snippet(&quot;https://tagmycode.com/snippet/14517/streamlit-basic-concepts#.X6fD8WgzZPY&quot;)</code></pre>
+</li>
+</ul>
+<h1><a class="header" href="#centerimg-srcimagesappjpg-alt--data-applicationscenter" id="centerimg-srcimagesappjpg-alt--data-applicationscenter"><center><img src="images/App.jpg" alt="" /> <strong>Data Applications</strong></center></a></h1>
+<hr />
+<h4><a class="header" href="#codes-1" id="codes-1"><strong>Codes</strong></a></h4>
+<ul>
+<li>
+<p><strong>Simple CRUD Application</strong></p>
+<pre><code>  import streamlit as st
+  import pandas as pd
+  import base64
+  from PIL import Image
+  import json
+  import urllib.request
+
+  # DB Management
+  # DB Functions
+
+  # Database Creation &amp; Connection
+  import sqlite3
+  from sqlite3 import Connection
+  import streamlit as st
+
+  # Security
+  #passlib,hashlib,bcrypt,scrypt
+
+  import hashlib
+
+  URI_SQLITE_DB = &quot;Users.db&quot;
+
+      html_temp = &quot;&quot;&quot;
+          &lt;body style=&quot;background-color:red;&quot;&gt;
+          &lt;div style=&quot;background-color:tomato;padding:10px&quot;&gt;
+          &lt;h2 style=&quot;color:white;text-align:center;&quot;&gt;Simple Login Application Code&lt;/h2&gt;
+          &lt;/div&gt;
+          &lt;/body&gt;
+      &quot;&quot;&quot;
+  st.set_page_config(
+  page_title = 'Apps',
+  page_icon = &quot;✌&quot;,
+  layout = &quot;centered&quot;,
+  initial_sidebar_state = &quot;expanded&quot;
+  )
+
+  def make_hashes(password):
+      return hashlib.sha256(str.encode(password)).hexdigest()
+
+  def check_hashes(password,hashed_text):
+      if make_hashes(password) == hashed_text:
+          return hashed_text
+      return False
+
+  # &quot;&quot;&quot;
+  # check_same_thread = False is added to avoid same thread issue
+  # &quot;&quot;&quot;
+  conn = sqlite3.connect(URI_SQLITE_DB, check_same_thread=False)
+  c = conn.cursor()
+
+  @st.cache(hash_funcs={Connection: id})
+  def get_connection(path: str):
+      &quot;&quot;&quot;Put the connection in cache to reuse if path does not change between Streamlit reruns.
+      NB : https://stackoverflow.com/questions/48218065/programmingerror-sqlite-objects-created-in-a-thread-can-only-be-used-in-that-sa
+      &quot;&quot;&quot;
+      return sqlite3.connect(path, check_same_thread=False)
+
+  def create_usertable(conn: Connection):
+      c.execute('CREATE TABLE IF NOT EXISTS userstable(username TEXT PRIMARY KEY,password TEXT)')
+
+  def add_userdata(conn: Connection,username,password):
+      c.execute('INSERT INTO userstable(username,password) VALUES (?,?)',(username,password))
+      conn.commit()
+
+  def login_user(conn: Connection,username,password):
+      c.execute('SELECT * FROM userstable WHERE username =? AND password = ?',(username,password))
+      data = c.fetchall()
+      return data
+
+  def main():
+
+      &quot;&quot;&quot;Simple Login Application&quot;&quot;&quot;
+      st.markdown(html_temp, unsafe_allow_html=True)
+      menu = [&quot;Home&quot;,&quot;Login&quot;,&quot;SignUp&quot;,&quot;Others&quot;,&quot;About&quot;]
+      st.markdown(
+      &quot;&quot;&quot;
+      &lt;style&gt;
+      .sidebar .sidebar-content {
+          # background-image: linear-gradient(#264D59, #43978D, #F9E07F, #F9AD6A, #D46C4E);
+          background-image: linear-gradient(to right top, #ebe9f3, #b7bdcc, #8094a5, #496e7c, #0c4950);
+          color: blue;
+      }
+      &lt;/style&gt;
+      &quot;&quot;&quot;,
+          unsafe_allow_html=True,
+      )
+
+      choice = st.sidebar.selectbox(&quot;Menu&quot;, menu)
+
+
+      if choice == &quot;Home&quot;:
+          st.subheader(&quot;Home Page:&quot;)
+
+      elif choice == &quot;Login&quot;:
+          st.subheader(&quot;**Please Login to the page !**&quot;)
+          username = st.sidebar.text_input(&quot;Username&quot;,&quot;&quot;)
+          password = st.sidebar.text_input(&quot;Password&quot;,type='password')
+      
+      if st.sidebar.checkbox(&quot;Login&quot;):
+          hashed_pswd = make_hashes(password)
+          result = login_user(conn,username,check_hashes(password,hashed_pswd))
+          if result:
+          st.success(&quot;Logged In as {0!s}&quot;.format(username))
+          else:
+          st.warning(&quot;Incorrect Adhar/Passport/VoterID/Password&quot;)
+
+      elif choice == &quot;SignUp&quot;:
+          st.subheader(&quot;Create New Account&quot;)
+          new_user = st.text_input(&quot;Username&quot;,&quot;&quot;) 
+          new_password = st.text_input(&quot;Password&quot;,type='password')
+
+      if st.button(&quot;Signup&quot;):
+          create_usertable(conn)
+          add_userdata(conn,new_user,make_hashes(new_password))
+          st.success(&quot;Account created successfully. Please Login to application.&quot;)
+
+      elif choice == &quot;Others&quot;:
+          st.info(&quot;Please visit to nearest adhar or passport or voterid location to get any of the ID.&quot;)
+
+      elif choice == &quot;About&quot;:
+          st.sidebar.title(&quot;App Version details&quot;)
+          st.sidebar.info(&quot;**App version 1.0**&quot;)
+
+
+  if __name__ == &quot;__main__&quot;:
+      main()
+</code></pre>
+</li>
+<li>
+<p><strong>PencilSketcher App</strong></p>
+<pre><code>  import streamlit as st
+  import numpy as np
+  from PIL import Image
+  import cv2
+
+  st.set_option('deprecation.showfileUploaderEncoding', False)
+
+  def dodgeV2(x, y):
+      return cv2.divide(x, 255 - y, scale=256)
+
+  def pencilsketch(inp_img):
+      img_gray = cv2.cvtColor(inp_img, cv2.COLOR_BGR2GRAY)
+      img_invert = cv2.bitwise_not(img_gray)
+      img_smoothing = cv2.GaussianBlur(img_invert, (21, 21),sigmaX=0, sigmaY=0)
+      final_img = dodgeV2(img_gray, img_smoothing)
+      return(final_img)
+
+
+  st.title(&quot;PencilSketcher App&quot;)
+  st.write(&quot;This Web App is to help convert your photos to realistic Pencil Sketches&quot;)
+
+  file_image = st.sidebar.file_uploader(&quot;Upload your Photos&quot;, type=['jpeg','jpg','png'])
+
+  if file_image is None:
+      st.write(&quot;You haven't uploaded any image file&quot;)
+
+  else:
+      input_img = Image.open(file_image)
+      final_sketch = pencilsketch(np.array(input_img))
+      st.write(&quot;**Input Photo**&quot;)
+      st.image(input_img, use_column_width=True)
+      st.write(&quot;**Output Pencil Sketch**&quot;)
+      st.image(final_sketch, use_column_width=True)
+</code></pre>
+</li>
+<li>
+<p><strong>IrisPrediction App</strong></p>
+<pre><code>  import streamlit as st
+  import pandas as pd
+  from sklearn import datasets
+  from sklearn.ensemble import RandomForestClassifier
+  import urllib.request
+  from PIL import Image
+
+  html_temp = &quot;&quot;&quot;
+      &lt;body style=&quot;background-color:red;&quot;&gt;
+      &lt;div style=&quot;background-color:tomato;padding:10px&quot;&gt;
+      &lt;h2 style=&quot;color:white;text-align:center;&quot;&gt; Classifier(SL) - Iris Flower Prediction App&lt;/h2&gt;
+      &lt;/div&gt;
+      &lt;/body&gt;
+  &quot;&quot;&quot;
+
+  st.beta_set_page_config(
+          page_title = 'Iris',
+          page_icon = &quot;🌺&quot;,
+          layout = &quot;centered&quot;,
+          initial_sidebar_state = &quot;expanded&quot;
+      )
+
+  def inputFeatures():
+      sepal_length = st.sidebar.slider('Sepal length', 4.3, 7.9, 5.4)
+      sepal_width = st.sidebar.slider('Sepal width', 2.0, 4.4, 3.4)
+      petal_length = st.sidebar.slider('Petal length', 1.0, 6.9, 1.3)
+      petal_width = st.sidebar.slider('Petal width', 0.1, 2.5, 0.2)
+      data = {'sepal_length': sepal_length,
+              'sepal_width': sepal_width,
+              'petal_length': petal_length,
+              'petal_width': petal_width}
+      features = pd.DataFrame(data, index=[0])
+      return features
+
+  def main():
+      st.markdown(html_temp, unsafe_allow_html=True)
+      st.sidebar.info(&quot;&quot;&quot;
+          ## Packages:
+          - Streamlit, pandas &amp; sklearn
+          - How to install? 
+          &gt; 1. **pip install streamlit**
+          &gt; 2. **pip install pandas**
+          &gt; 3. **pip install scikit-learn**
+          &quot;&quot;&quot;)
+      st.sidebar.header('Input Features')
+      df = inputFeatures()
+
+      st.sidebar.info(&quot;#### Iris Flower species : setosa, versicolor, virginica&quot;)
+      img = Image.open(urllib.request.urlopen(&quot;https://raw.githubusercontent.com/SurendraRedd/MachineLearningCode/master/Iris_Species.png&quot;)) # Opens the image from the url
+      st.sidebar.image(img, width=300, caption=&quot;&quot;)
+      st.sidebar.info(&quot;#### Features : setosa, versicolor, virginica&quot;)
+      img = Image.open(urllib.request.urlopen(&quot;https://raw.githubusercontent.com/SurendraRedd/MachineLearningCode/master/features.png&quot;)) # Opens the image from the url
+      st.sidebar.image(img, width=400, caption=&quot;&quot;)
+
+      st.subheader('Input Features')
+      st.write(df)
+
+      iris = datasets.load_iris()
+      X = iris.data
+      Y = iris.target
+
+      clf = RandomForestClassifier()
+      clf.fit(X, Y)
+
+      prediction = clf.predict(df)
+      prediction_proba = clf.predict_proba(df)
+
+      st.subheader('labels &amp; index number')
+      st.write(iris.target_names)
+
+      st.subheader('Prediction')
+      st.write(iris.target_names[prediction])
+      #st.write(prediction)
+
+      st.subheader('Prediction Probability')
+      st.write(prediction_proba)
+
+      
+
+
+  if __name__ == '__main__':
+      main()</code></pre>
+</li>
+</ul>
+<h1><a class="header" href="#centerimg-srcimagesreferencejpg-alt--referencescenter" id="centerimg-srcimagesreferencejpg-alt--referencescenter"><center><img src="images/reference.jpg" alt="" /> <strong>References</strong></center></a></h1>
+<hr />
+<ul>
+<li><a href="https://docs.streamlit.io/en/stable/">docs</a></li>
+<li><a href="https://docs.streamlit.io/en/stable/api.html">API Reference</a></li>
+<li><a href="https://github.com/marcskovmadsen/awesome-streamlit">Website</a></li>
+<li><a href="https://www.streamlit.io/components">Components</a></li>
+</ul>
+<h1><a class="header" href="#centerimg-srcimagesdonepng-alt--happylearningcenter" id="centerimg-srcimagesdonepng-alt--happylearningcenter"><center><img src="images/Done.png" alt="" /> <strong>HappyLearning!</strong></center></a></h1>
+<h1><a class="header" href="#contributors" id="contributors">Contributors</a></h1>
+<p>Feedback and suggestions are accepted.</p>
+<ul>
+<li><a href="https://github.com/SurendraRedd">Surendra Reddy</a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_line_numbers = true;
+        </script>
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+        <script src="ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+        
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            MathJax.Hub.Register.StartupHook('End', function() {
+                window.setTimeout(window.print, 100);
+            });
+        });
+        </script>
+        
+        
+
+    </body>
+</html>

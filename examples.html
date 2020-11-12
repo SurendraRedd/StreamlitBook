@@ -1,0 +1,454 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Examples - Streamlit Digital Book</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Streamlit Book contains details of the installation, concepts and uninstallation.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="favicon.png">
+        
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="front/index.html">Home</a></li><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="concepts.html"><strong aria-hidden="true">2.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="examples.html" class="active"><strong aria-hidden="true">3.</strong> Examples</a></li><li class="chapter-item expanded "><a href="mlapps.html"><strong aria-hidden="true">4.</strong> MLApps</a></li><li class="chapter-item expanded "><a href="references.html"><strong aria-hidden="true">5.</strong> References</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="contributors.html">Contributors</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Streamlit Digital Book</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#centerimg-srcimagescodepng-alt--streamlit-sample-codescenter" id="centerimg-srcimagescodepng-alt--streamlit-sample-codescenter"><center><img src="images/Code.png" alt="" /> <strong>Streamlit Sample codes</strong></center></a></h1>
+<hr />
+<h4><a class="header" href="#codes" id="codes"><strong>Codes</strong></a></h4>
+<ul>
+<li>
+<p><strong>Example- Usage of Slider, SelectBox &amp; Miltiselect</strong></p>
+<pre><code>  import streamlit as st
+  import numpy as np
+
+  x = st.slider('Select a value')
+  st.write(x, 'squared value is', x * x)
+
+  Exp = streamlit.selectbox(&quot;Choose your Experience: &quot;, np.arange(1, 40, 1))
+
+  lan = st.multiselect(&quot;Which is your favorite language?&quot;, 
+                   [&quot;Python&quot;, &quot;JavaScript&quot;,
+                   &quot;Java&quot;, &quot;C&quot;, &quot;Julia&quot;])
+</code></pre>
+</li>
+<li>
+<p><strong>Example- Usage of dataframe</strong></p>
+<pre><code>  import pandas as pd
+  import streamlit as st
+
+  @st.cache
+  def load_data():
+      df = pd.read_csv(&quot;data.csv&quot;) # csv
+      #df = pd.read_excel(&quot;data.excel&quot;) #excel
+      return df
+
+  # Will only run once if already cached
+  df = load_data()
+</code></pre>
+</li>
+<li>
+<p><strong>Example- Jupyter Notebook</strong></p>
+<pre><code>  # Run jupyter notebook in streamlit using 3 steps below
+  - jupyter nbconvert --to script scriptname.ipynb
+  - awk '!/ipython/' scriptname.py &gt; [temp.py](http://temp.py/) &amp;&amp; mv [temp.py](http://temp.py/) [app.py](http://app.py/) &amp;&amp; rm scriptname.py
+  - streamlit run [app.py](http://app.py/)
+  Refer the blog more details https://learnups2020.wordpress.com/2020/11/07/streamlit-code-running-from-jupyter-notebook/
+</code></pre>
+</li>
+<li>
+<p><strong>Example- Altair Chart</strong></p>
+<pre><code>  # Alt Chart example
+  import pandas as pd
+  import numpy as np
+  import altair as alt
+  import streamlit as st
+
+  df = pd.DataFrame(np.random.randn(100, 3), columns=['a', 'b', 'c'])
+  c = alt.Chart(df).mark_circle().encode(x='a', y='b', size='c',  
+                                  color='c')
+  st.altair_chart(c, width=-1)
+</code></pre>
+</li>
+<li>
+<p><strong>Example- Simple Calculator App using sqlite DB</strong></p>
+<pre><code>  # Simple Calculator
+  import pandas as pd
+  from pathlib import Path
+  import sqlite3
+  from sqlite3 import Connection
+  import streamlit as st
+
+  URI_SQLITE_DB = &quot;test.db&quot;
+
+
+  def main():
+  st.title(&quot;Simple Calculator&quot;)
+  st.markdown(&quot;Select two inputs from sidebar.&quot;)
+  
+  conn = get_connection(URI_SQLITE_DB)
+  init_db(conn)
+
+  build_sidebar(conn)
+  display_data(conn)
+  run_calculator(conn)
+
+
+  def init_db(conn: Connection):
+          conn.execute(
+                  &quot;&quot;&quot;CREATE TABLE IF NOT EXISTS test
+                  (
+                          INPUT1 INT,
+                          INPUT2 INT
+                  );&quot;&quot;&quot;
+          )
+          conn.commit()
+
+
+  def build_sidebar(conn: Connection):
+          st.sidebar.header(&quot;Inputs&quot;)
+          input1 = st.sidebar.slider(&quot;value-1&quot;, 0, 100)
+          input2 = st.sidebar.slider(&quot;value-2&quot;, 0, 100)
+          if st.sidebar.button(&quot;Save to database&quot;):
+                  conn.execute(f&quot;INSERT INTO test (INPUT1, INPUT2) VALUES ({input1}, {input2})&quot;)
+                  conn.commit()
+
+
+  def display_data(conn: Connection):
+          if st.checkbox(&quot;Display data from the database&quot;):
+                  st.dataframe(get_data(conn))
+
+
+  def run_calculator(conn: Connection):
+          if st.button(&quot;Calculate Sum&quot;):
+                  st.info(&quot;Sum of two inputs function is called.&quot;)
+                  df = get_data(conn)
+                  st.write(df.sum())
+
+
+  def get_data(conn: Connection):
+          df = pd.read_sql(&quot;SELECT * FROM test&quot;, con=conn)
+          return df
+
+
+  @st.cache(hash_funcs={Connection: id})
+  def get_connection(path: str):
+          &quot;&quot;&quot;Put the connection in cache to reuse if path does not change between Streamlit reruns.
+          NB : https://stackoverflow.com/questions/48218065/programmingerror-sqlite-objects-created-in-a-thread-can-only-be-used-in-that-sa
+          &quot;&quot;&quot;
+          return sqlite3.connect(path, check_same_thread=False)
+
+
+  if __name__ == &quot;__main__&quot;:
+          main()
+</code></pre>
+</li>
+<li>
+<p><strong>Example- ProgressBar in sidebar and generate chart</strong></p>
+<pre><code>  import streamlit as st 
+  import time 
+  import numpy as np
+
+  progress_bar = st.sidebar.progress(0)
+  status_text = st.sidebar.empty()
+  last_rows = np.random.randn(1, 1)
+  chart = st.line_chart(last_rows)
+
+
+  for i in range(1, 101):
+  new_rows = last_rows[-1, :] + np.random.randn(5, 1).cumsum(axis=0)
+  status_text.text(&quot;%i%% Complete&quot; % i)
+  chart.add_rows(new_rows)
+  progress_bar.progress(i)
+  last_rows = new_rows
+  time.sleep(0.05)
+
+  progress_bar.empty()
+
+  st.button(&quot;Re-run&quot;)
+</code></pre>
+</li>
+<li>
+<p><strong>Example- Streamlit Components Example</strong></p>
+<pre><code>  import streamlit as st
+
+  st.sidebar.subheader(&quot;Component 1&quot;)
+
+  t1 = st.sidebar.text_input(&quot;Component 1 name&quot;)
+  s1 = st.sidebar.slider(&quot;Component 1 value&quot;)
+
+  st.sidebar.markdown(&quot;---&quot;)
+
+  st.sidebar.subheader(&quot;Component 2&quot;)
+  t2 = st.sidebar.text_input(&quot;Component 2 name&quot;)
+  s2 = st.sidebar.slider(&quot;Component 2&quot;)
+
+  st.title(&quot;Hello!&quot;)
+
+  st.write(t1, s1)
+  st.write(t2, s2)
+
+
+  template = &quot;&quot;&quot;
+  &lt;div class=&quot;markdown-text-container stText&quot; style=&quot;width: 698px;&quot;&gt;
+  &lt;div style=&quot;font-size: small;&quot;&gt;This is paragraph 1 text.&lt;/div&gt;
+  &lt;p&gt;This is paragraph 2 text.&lt;/p&gt;
+  &lt;p&gt;This is paragraph 3 text.&lt;/p&gt;
+  &lt;/div&gt;
+  &quot;&quot;&quot;
+</code></pre>
+</li>
+<li>
+<p><strong>Example- Streamlit Code Share Example</strong></p>
+<pre><code>  Prerequisites
+  - pip install streamlit-embedcode
+  import streamlit as st
+  from streamlit_embedcode import github_gist, gitlab_snippet, pastebin_snippet, codepen_snippet, ideone_snippet, tagmycode_snippet
+
+  st.title(&quot;Github Gist Snippet&quot;)
+  github_gist(&quot;https://gist.github.com/SurendraRedd/feaa6f29961501fa9fce7a45abc14651&quot;)
+
+  st.title(&quot;Gitlab Snippet&quot;)
+  gitlab_snippet(&quot;https://gitlab.com/snippets/2037642&quot;, height=400)
+
+  st.title(&quot;Pastebin Snippet&quot;)
+  pastebin_snippet(&quot;https://pastebin.com/Ryr8q1kq&quot;, width = 600, scrolling = False)
+
+  st.title(&quot;Code Pen Snippet&quot;)
+  codepen_snippet(&quot;https://codepen.io/surendra1985/pen/wvGREBb&quot;, width = 600, scrolling = False)
+
+  st.title(&quot;Ideone Snippet&quot;)
+  ideone_snippet(&quot;https://ideone.com/tXCake&quot;)
+
+  st.title(&quot;Tagmycode Snippet&quot;)
+  tagmycode_snippet(&quot;https://tagmycode.com/snippet/14517/streamlit-basic-concepts#.X6fD8WgzZPY&quot;)</code></pre>
+</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="concepts.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="mlapps.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="concepts.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="mlapps.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_line_numbers = true;
+        </script>
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+        <script src="ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
